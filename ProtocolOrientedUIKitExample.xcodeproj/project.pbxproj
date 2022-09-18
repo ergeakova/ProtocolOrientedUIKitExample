@@ -19,6 +19,7 @@
 		C000C51728D6003400DD9325 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C000C51628D6003400DD9325 /* APIManager.swift */; };
 		C05A744828D7982800F46950 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05A744728D7982800F46950 /* UserViewModel.swift */; };
 		C05A744A28D798E500F46950 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05A744928D798E500F46950 /* UserService.swift */; };
+		C05A744C28D79BB700F46950 /* UserViewModelOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05A744B28D79BB700F46950 /* UserViewModelOutput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		C000C51628D6003400DD9325 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		C05A744728D7982800F46950 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		C05A744928D798E500F46950 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		C05A744B28D79BB700F46950 /* UserViewModelOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModelOutput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				C05A744728D7982800F46950 /* UserViewModel.swift */,
+				C05A744B28D79BB700F46950 /* UserViewModelOutput.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C05A744C28D79BB700F46950 /* UserViewModelOutput.swift in Sources */,
 				C05A744A28D798E500F46950 /* UserService.swift in Sources */,
 				C000C4E428D5F84500DD9325 /* UserViewController.swift in Sources */,
 				C05A744828D7982800F46950 /* UserViewModel.swift in Sources */,

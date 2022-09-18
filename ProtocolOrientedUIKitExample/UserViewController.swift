@@ -7,9 +7,15 @@
 
 import UIKit
 
-class UserViewController: UIViewController {
+class UserViewController: UIViewController, UserViewModelOutput {
     
     private let userViewModel: UserViewModel
+    
+    func updateView(name: String, email: String, userName: String) {
+        self.lblName.text = name
+        self.lblUsername.text = userName
+        self.lblEmail.text = email
+    }
     
     private let lblName: UILabel = {
         let label = UILabel()
@@ -35,6 +41,7 @@ class UserViewController: UIViewController {
     init(userViewModel: UserViewModel){
         self.userViewModel = userViewModel
         super.init(nibName: nil, bundle: nil)
+        self.userViewModel.output = self
     }
     
     required init?(coder: NSCoder) {
@@ -44,6 +51,7 @@ class UserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        userViewModel.fetchUser()
     }
     
     func setupViews(){
@@ -51,7 +59,6 @@ class UserViewController: UIViewController {
         view.addSubview(lblName)
         view.addSubview(lblUsername)
         view.addSubview(lblEmail)
-        
         
         NSLayoutConstraint.activate(
             [
