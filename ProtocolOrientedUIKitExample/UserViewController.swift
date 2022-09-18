@@ -29,10 +29,11 @@ class UserViewController: UIViewController {
         label.textAlignment = .center
         return label
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        fetchUser()
     }
     
     func setupViews(){
@@ -43,25 +44,38 @@ class UserViewController: UIViewController {
         
         
         NSLayoutConstraint.activate(
-        [
-            lblName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            lblName.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-            lblName.heightAnchor.constraint(equalToConstant: 60),
-            lblName.widthAnchor.constraint(equalToConstant: 200),
-            
-            lblUsername.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            lblUsername.topAnchor.constraint(equalTo: lblName.bottomAnchor),
-            lblUsername.heightAnchor.constraint(equalToConstant: 60),
-            lblUsername.widthAnchor.constraint(equalToConstant: 200),
-            
-            lblEmail.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            lblEmail.topAnchor.constraint(equalTo: lblUsername.bottomAnchor),
-            lblEmail.heightAnchor.constraint(equalToConstant: 60),
-            lblEmail.widthAnchor.constraint(equalToConstant: 200),
-        ]
+            [
+                lblName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                lblName.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+                lblName.heightAnchor.constraint(equalToConstant: 60),
+                lblName.widthAnchor.constraint(equalToConstant: 200),
+                
+                lblUsername.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                lblUsername.topAnchor.constraint(equalTo: lblName.bottomAnchor),
+                lblUsername.heightAnchor.constraint(equalToConstant: 60),
+                lblUsername.widthAnchor.constraint(equalToConstant: 200),
+                
+                lblEmail.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                lblEmail.topAnchor.constraint(equalTo: lblUsername.bottomAnchor),
+                lblEmail.heightAnchor.constraint(equalToConstant: 60),
+                lblEmail.widthAnchor.constraint(equalToConstant: 200),
+            ]
         )
     }
-
-
+    
+    private func fetchUser(){
+        APIManager.shared.fetchUser { result in
+            switch result {
+            case .success(let user):
+                self.lblName.text = user.name
+                self.lblUsername.text = user.username
+                self.lblEmail.text = user.email
+            case .failure:
+                self.lblName.text = "No User"
+            }
+        
+        }
+    }
+    
 }
 
