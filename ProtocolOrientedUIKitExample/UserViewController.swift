@@ -9,6 +9,8 @@ import UIKit
 
 class UserViewController: UIViewController {
     
+    private let userViewModel: UserViewModel
+    
     private let lblName: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -30,10 +32,18 @@ class UserViewController: UIViewController {
         return label
     }()
     
+    init(userViewModel: UserViewModel){
+        self.userViewModel = userViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        fetchUser()
     }
     
     func setupViews(){
@@ -61,20 +71,6 @@ class UserViewController: UIViewController {
                 lblEmail.widthAnchor.constraint(equalToConstant: 200),
             ]
         )
-    }
-    
-    private func fetchUser(){
-        APIManager.shared.fetchUser { result in
-            switch result {
-            case .success(let user):
-                self.lblName.text = user.name
-                self.lblUsername.text = user.username
-                self.lblEmail.text = user.email
-            case .failure:
-                self.lblName.text = "No User"
-            }
-        
-        }
     }
     
 }

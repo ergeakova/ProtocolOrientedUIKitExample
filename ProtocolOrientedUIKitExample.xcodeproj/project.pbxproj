@@ -17,6 +17,8 @@
 		C000C50328D5F84C00DD9325 /* ProtocolOrientedUIKitExampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C000C50228D5F84C00DD9325 /* ProtocolOrientedUIKitExampleUITestsLaunchTests.swift */; };
 		C000C51428D5FF4D00DD9325 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C000C51328D5FF4D00DD9325 /* UserModel.swift */; };
 		C000C51728D6003400DD9325 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C000C51628D6003400DD9325 /* APIManager.swift */; };
+		C05A744828D7982800F46950 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05A744728D7982800F46950 /* UserViewModel.swift */; };
+		C05A744A28D798E500F46950 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05A744928D798E500F46950 /* UserService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		C000C50228D5F84C00DD9325 /* ProtocolOrientedUIKitExampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolOrientedUIKitExampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C000C51328D5FF4D00DD9325 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		C000C51628D6003400DD9325 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		C05A744728D7982800F46950 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		C05A744928D798E500F46950 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,7 @@
 		C000C4DE28D5F84500DD9325 /* ProtocolOrientedUIKitExample */ = {
 			isa = PBXGroup;
 			children = (
+				C05A744628D7980700F46950 /* ViewModel */,
 				C000C51528D6000900DD9325 /* Service */,
 				C000C51228D5FF3E00DD9325 /* Model */,
 				C000C4DF28D5F84500DD9325 /* AppDelegate.swift */,
@@ -142,8 +147,17 @@
 			isa = PBXGroup;
 			children = (
 				C000C51628D6003400DD9325 /* APIManager.swift */,
+				C05A744928D798E500F46950 /* UserService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		C05A744628D7980700F46950 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C05A744728D7982800F46950 /* UserViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,7 +290,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C05A744A28D798E500F46950 /* UserService.swift in Sources */,
 				C000C4E428D5F84500DD9325 /* UserViewController.swift in Sources */,
+				C05A744828D7982800F46950 /* UserViewModel.swift in Sources */,
 				C000C4E028D5F84500DD9325 /* AppDelegate.swift in Sources */,
 				C000C51728D6003400DD9325 /* APIManager.swift in Sources */,
 				C000C51428D5FF4D00DD9325 /* UserModel.swift in Sources */,
