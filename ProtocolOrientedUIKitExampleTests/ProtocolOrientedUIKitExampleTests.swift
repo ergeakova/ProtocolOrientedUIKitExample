@@ -9,28 +9,52 @@ import XCTest
 @testable import ProtocolOrientedUIKitExample
 
 class ProtocolOrientedUIKitExampleTests: XCTestCase {
-
+    
+    private var sutUserViewModel: UserViewModel!
+    private var sutUserService: MockUserService!
+    private var sutOutput: MockUserViewOutput!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        sutUserService = MockUserService()
+        sutUserViewModel = UserViewModel(userService: sutUserService)
+        sutOutput = MockUserViewOutput()
+        sutUserViewModel.output = sutOutput
     }
-
+    
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        sutOutput = nil
+        sutUserService = nil
+        sutUserViewModel = nil
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func testUpdateView_whenAPISuccess_showsEmailNameUsername() throws {
+        let mockUser = User(id: 1, name: "erge", username: "ergeakova", email: "ergeak@gmail.com", address: Address(street: "a", suite: "b", city: "c", zipcode: "d", geo: Geo(lat: "123", lng: "321")), phone: "+95001234567", website: "www.ergeakova.com", company: Company(name: "erge", catchPhrase: "erge", bs: "erge"))
+        
+        sutUserService.fetchUserMaockResult = .success(mockUser)
+        sutUserViewModel.fetchUser()
+        
+        XCTAssertEqual(sutOutput.updateViewArray.first?.username, "ergeakova")
     }
+    
+    func testUpdateView_whenAPIFailure_NoUser() throws {
+        sutUserService.fetchUserMaockResult = .failure(NSError())
+        sutUserViewModel.fetchUser()
+        XCTAssertEqual(sutOutput.updateViewArray.first?.name, "No User")
+    }
+}
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+class MockUserService: UserService{
+    var fetchUserMaockResult: Result<ProtocolOrientedUIKitExample.User, Error>?
+    func fetchUser(completion: @escaping (Result<ProtocolOrientedUIKitExample.User, Error>) -> Void) {
+        if let result = fetchUserMaockResult{
+            completion(result)
         }
     }
+}
 
+class MockUserViewOutput: UserViewModelOutput {
+    var updateViewArray: [(name:String, username: String, email: String)] = []
+    func updateView(name: String, email: String, userName: String) {
+        updateViewArray.append(( name,userName,email))
+    }
 }
